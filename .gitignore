@@ -1,5 +1,6 @@
 
 .env
+env
 node_modules
 dummyData-ignore-prod
 helping-ignore-prod
