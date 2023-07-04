@@ -38,6 +38,8 @@ app.use(
       "content-type ",
       "access-control-allow-origin",
       "access-control-allow-credentials",
+      "Access-Control-Allow-Origin",
+      "Access-Control-Allow-Credentials",
       "Set-Cookie",
     ],
   })
