@@ -121,7 +121,6 @@ exports.signupConfirm = async (req, res, next) => {
               return res
                 .status(200)
                 .cookie("token", `${generatedTokens.refreshToken}`, {
-                  sameSite: "none",
                   secure: true,
                   httpOnly: true,
                 })
@@ -188,7 +187,6 @@ exports.login = async (req, res, next) => {
             return res
               .status(200)
               .cookie("token", `${generatedTokens.refreshToken}`, {
-                sameSite: "none",
                 secure: true,
                 httpOnly: true,
               })
