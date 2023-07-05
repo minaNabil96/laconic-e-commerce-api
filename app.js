@@ -33,6 +33,8 @@ app.use(
     origin: [
       // "http://localhost:3000",
       process.env.ALLOWED_URL,
+      "https://laconic-e-commerce-sample-minanabil96.vercel.app/",
+      "https://laconic-e-commerce-sample-git-main-minanabil96.vercel.app/",
     ],
     allowedHeaders: [
       "content-type ",

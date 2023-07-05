@@ -123,6 +123,7 @@ exports.signupConfirm = async (req, res, next) => {
                 .cookie("token", `${generatedTokens.refreshToken}`, {
                   secure: true,
                   httpOnly: true,
+                  sameSite: "none",
                 })
                 .json({
                   isLoggedIn: true,
@@ -189,6 +190,7 @@ exports.login = async (req, res, next) => {
               .cookie("token", `${generatedTokens.refreshToken}`, {
                 secure: true,
                 httpOnly: true,
+                sameSite: "none",
               })
               .json({
                 isLoggedIn: true,
