@@ -1,12 +1,12 @@
 const createError = require("http-errors");
 const express = require("express");
+const cors = require("cors");
 require("dotenv").config();
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const helmet = require("helmet");
 const cookie = require("cookie");
-const cors = require("cors");
 const ApiError = require("./helpers/apiError");
 const globalErrorHandler = require("./middlewares/globalErrorHandler");
 
