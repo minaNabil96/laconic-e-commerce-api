@@ -6,7 +6,7 @@ const http = require("http");
 
 const debug = require("debug")("laconic-e-commerce-api:server");
 const app = require("../app");
-const { main } = require("../database/connection");
+const  {main}  = require("../database/connection");
 
 /**
  * Create HTTP server.
@@ -81,8 +81,12 @@ function onListening() {
  */
 
 main().then(() => {
-  server.listen(port);
-  process.on("unhandledRejection", (err) => {
+  server.listen(port,()=>{
+    console.log("server is running...")
+  });
+});
+
+ process.on("unhandledRejection", (err) => {
     console.error(`unhandledRejection ERROR: ${err}`);
     server.close(() => {
       console.log(`Shutting down....`);
@@ -91,4 +95,3 @@ main().then(() => {
   });
   server.on("error", onError);
   server.on("listening", onListening);
-});
