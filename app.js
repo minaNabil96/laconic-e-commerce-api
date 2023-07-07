@@ -36,16 +36,19 @@ app.use(
       "https://laconic-e-commerce-sample-minanabil96.vercel.app",
       "https://laconic-e-commerce-sample-git-main-minanabil96.vercel.app/",
       "https://laconic-e-commerce-sample-git-main-minanabil96.vercel.app",
-
       "https://laconic-e-commerce-sample-cct0r1pms-minanabil96.vercel.app",
       "https://laconic-e-commerce-sample-cct0r1pms-minanabil96.vercel.app/",
+      "https://laconic-e-commerce-sample-api.cyclic.app/",
+      "https://laconic-e-commerce-sample-api.cyclic.app",
+      "*",
     ],
     allowedHeaders: [
-      "content-type ",
+      "content-type",
       "access-control-allow-origin",
       "access-control-allow-credentials",
       "Access-Control-Allow-Origin",
       "Access-Control-Allow-Credentials",
+      "Access-Control-Allow-Methods",
       "Set-Cookie",
     ],
   })
