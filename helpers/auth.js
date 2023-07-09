@@ -136,7 +136,7 @@ exports.emailConfirmation = async (email, subject, htmlTamplate) => {
     };
 
     const info = await transporterGmail.sendMail(mailOptions);
-    console.log(`email sent: ${info.response}`);
+    // console.log(`email sent: ${info.response}`);
     return info.response;
 
     // if (email.includes("yahoo")) {

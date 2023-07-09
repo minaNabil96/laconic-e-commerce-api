@@ -35,6 +35,7 @@ exports.signup = async (req, res, next) => {
       const userMatch = await userModel.findOne({
         username: { $eq: username },
       });
+      console.log(userMatch);
       //  new user
       if (!userMatch && encryptPassword && slugSentence) {
         if (email.includes("gmail") || email.includes("yahoo")) {
@@ -45,8 +46,11 @@ exports.signup = async (req, res, next) => {
             "Email Confirmation",
             `${process.env.ALLOWED_URL}/users/email-confirmation/Bearer-${confirmationToken}`
           );
-
-          if (confirmationToken) {
+          if (
+            confirmationToken &&
+            confirmation &&
+            confirmation.includes("OK")
+          ) {
             const newUser = await userModel.create({
               username,
               password: encryptPassword,
@@ -69,14 +73,28 @@ exports.signup = async (req, res, next) => {
                 )
               );
             }
+          } else {
+            return next(
+              new ApiError(
+                `an error occurred while trying to create new user, please try again later.`,
+                400
+              )
+            );
           }
         } else {
-          return next(new ApiError(`this email doesn't supported `, 400));
+          return next(new ApiError(`this email is not supported `, 400));
         }
       }
       // user has signd up before
       else if (userMatch) {
-        res
+        if (userMatch.confirmed === false) {
+          const deleteUser = await userModel.findOneAndDelete({
+            username: { $eq: username },
+          });
+
+          return res.status(405).json({ status: `please try again` });
+        }
+        return res
           .status(405)
           .json({ status: `${userMatch.username} has already registered` });
       }
@@ -251,7 +269,7 @@ exports.forgotPassword = async (req, res, next) => {
           "Reset Password",
           `${process.env.ALLOWED_URL}/users/reset-password/Bearer-${confirmationToken}`
         );
-        if (passwordReset) {
+        if (passwordReset && passwordReset.includes("OK")) {
           res.status(200).json({
             status:
               "we have sent you an email with a link to reset your password ",
@@ -488,7 +506,7 @@ exports.contactme = async (req, res, next) => {
          phone: ${phone}.
          message: ${message}.`
       );
-      if (confirmation) {
+      if (confirmation && confirmation.includes("OK")) {
         res.status(200).json({ status: "success" });
       } else {
         return next(new ApiError(`failed`));
