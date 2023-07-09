@@ -113,13 +113,20 @@ exports.jwtAdminVerification = async (token) => {
 
 exports.emailConfirmation = async (email, subject, htmlTamplate) => {
   try {
-    const transporter = nodemailer.createTransport({
+    const transporterGmail = nodemailer.createTransport({
       service: "gmail",
       auth: {
         user: `${process.env.EMAIL_FOR_NODEMAILER}`,
         pass: `${process.env.APP_PASSWORD_FOR_NODEMAILER}`,
       },
     });
+    // const transporterYahoo = nodemailer.createTransport({
+    //   service: "gmail",
+    //   auth: {
+    //     user: `${process.env.EMAIL_FOR_NODEMAILER}`,
+    //     pass: `${process.env.APP_PASSWORD_FOR_NODEMAILER}`,
+    //   },
+    // });
 
     const mailOptions = {
       from: `${process.env.EMAIL_FOR_NODEMAILER}`,
@@ -128,9 +135,15 @@ exports.emailConfirmation = async (email, subject, htmlTamplate) => {
       html: htmlTamplate,
     };
 
-    const info = await transporter.sendMail(mailOptions);
+    const info = await transporterGmail.sendMail(mailOptions);
     console.log(`email sent: ${info.response}`);
     return info.response;
+
+    // if (email.includes("yahoo")) {
+    //   const info = await transporterYahoo.sendMail(mailOptions);
+    //   console.log(`email sent: ${info.response}`);
+    //   return info.response;
+    // }
   } catch (error) {
     console.log(error);
     return null;

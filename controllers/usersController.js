@@ -37,37 +37,41 @@ exports.signup = async (req, res, next) => {
       });
       //  new user
       if (!userMatch && encryptPassword && slugSentence) {
-        const confirmationToken = await jwtConfirmEmail(username, email);
+        if (email.includes("gmail") || email.includes("yahoo")) {
+          const confirmationToken = await jwtConfirmEmail(username, email);
 
-        const confirmation = await emailConfirmation(
-          email,
-          "Email Confirmation",
-          `${process.env.ALLOWED_URL}/users/email-confirmation/Bearer-${confirmationToken}`
-        );
-
-        if (confirmationToken) {
-          const newUser = await userModel.create({
-            username,
-            password: encryptPassword,
+          const confirmation = await emailConfirmation(
             email,
-            slug: slugSentence,
-            image,
-            date,
-          });
-          if (newUser) {
-            res.status(201).json({
-              status: "congratulation",
-              newuser: { username, email, date, slug: slugSentence },
-              confirmationEmail: "sent successfully",
+            "Email Confirmation",
+            `${process.env.ALLOWED_URL}/users/email-confirmation/Bearer-${confirmationToken}`
+          );
+
+          if (confirmationToken) {
+            const newUser = await userModel.create({
+              username,
+              password: encryptPassword,
+              email,
+              slug: slugSentence,
+              image,
+              date,
             });
-          } else {
-            return next(
-              new ApiError(
-                `an error occurred while trying to create new user, please try again later.`,
-                400
-              )
-            );
+            if (newUser) {
+              res.status(201).json({
+                status: "congratulation",
+                newuser: { username, email, date, slug: slugSentence },
+                confirmationEmail: "sent successfully",
+              });
+            } else {
+              return next(
+                new ApiError(
+                  `an error occurred while trying to create new user, please try again later.`,
+                  400
+                )
+              );
+            }
           }
+        } else {
+          return next(new ApiError(`this email doesn't supported `, 400));
         }
       }
       // user has signd up before
@@ -121,9 +125,9 @@ exports.signupConfirm = async (req, res, next) => {
               return res
                 .status(200)
                 .cookie("token", `${generatedTokens.refreshToken}`, {
-                  secure: true,
+                  // secure: true,
                   httpOnly: true,
-                  sameSite: "none",
+                  // sameSite: "none",
                 })
                 .json({
                   isLoggedIn: true,
@@ -188,9 +192,9 @@ exports.login = async (req, res, next) => {
             return res
               .status(200)
               .cookie("token", `${generatedTokens.refreshToken}`, {
-                secure: true,
+                // secure: true,
                 httpOnly: true,
-                sameSite: "none",
+                // sameSite: "none",
               })
               .json({
                 isLoggedIn: true,
