@@ -143,9 +143,9 @@ exports.signupConfirm = async (req, res, next) => {
               return res
                 .status(200)
                 .cookie("token", `${generatedTokens.refreshToken}`, {
-                  // secure: true,
+                  secure: true,
                   httpOnly: true,
-                  // sameSite: "none",
+                  sameSite: "none",
                 })
                 .json({
                   isLoggedIn: true,
@@ -210,9 +210,9 @@ exports.login = async (req, res, next) => {
             return res
               .status(200)
               .cookie("token", `${generatedTokens.refreshToken}`, {
-                // secure: true,
+                secure: true,
                 httpOnly: true,
-                // sameSite: "none",
+                sameSite: "none",
               })
               .json({
                 isLoggedIn: true,

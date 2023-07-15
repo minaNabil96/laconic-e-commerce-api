@@ -28,10 +28,12 @@ app.use(
   cors({
     credentials: true,
     origin: [
-      "http://localhost:3000",
-      "http://localhost:3000/",
-      "http://192.168.1.8:3000",
-      "http://192.168.1.8:3000/",
+      // "http://localhost:3000",
+      // "http://localhost:3000/",
+      // "http://192.168.1.8:3000",
+      // "http://192.168.1.8:3000/",
+      // "http://192.168.1.7:5173/",
+      // "http://192.168.1.7:5173",
       // process.env.ALLOWED_URL,
       "https://laconic-e-commerce-sample.vercel.app/",
       "https://laconic-e-commerce-sample.vercel.app",
