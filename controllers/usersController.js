@@ -518,3 +518,11 @@ exports.contactme = async (req, res, next) => {
     return next(new ApiError(error.message, 400));
   }
 };
+
+exports.refreshServer = async (req, res, next) => {
+  try {
+    res.status(200).json({ status: "ready" });
+  } catch (error) {
+    return next(new ApiError(error.message, 400));
+  }
+};

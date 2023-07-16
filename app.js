@@ -45,7 +45,12 @@ app.use(
       "https://laconic-e-commerce-sample-cct0r1pms-minanabil96.vercel.app/",
       "https://laconic-e-commerce-sample-api.cyclic.app/",
       "https://laconic-e-commerce-sample-api.cyclic.app",
-      "*",
+      "https://mina-nabil-portfolio.vercel.app/",
+      "https://mina-nabil-portfolio.vercel.app",
+      "https://mina-nabil-portfolio-minanabil96.vercel.app/",
+      "https://mina-nabil-portfolio-minanabil96.vercel.app",
+      "https://mina-nabil-portfolio-git-main-minanabil96.vercel.app/",
+      "https://mina-nabil-portfolio-git-main-minanabil96.vercel.app",
     ],
     allowedHeaders: [
       "content-type",

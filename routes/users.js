@@ -13,8 +13,10 @@ const {
   contactme,
   forgotPassword,
   editPassword,
+  refreshServer,
 } = require("../controllers/usersController");
 /* GET users listing. */
+router.route("/refresh").get(refreshServer);
 router.route("/").get(getVisibleUsers);
 router.route("/signup").post(signup);
 router.route("/signup/confirmation").post(signupConfirm);
