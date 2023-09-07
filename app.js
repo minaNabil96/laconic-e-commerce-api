@@ -51,6 +51,8 @@ app.use(
       "https://mina-nabil-portfolio-minanabil96.vercel.app",
       "https://mina-nabil-portfolio-git-main-minanabil96.vercel.app/",
       "https://mina-nabil-portfolio-git-main-minanabil96.vercel.app",
+      "https://elfathrealestate.vercel.app/",
+      "https://elfathrealestate.vercel.app",
     ],
     allowedHeaders: [
       "content-type",
@@ -61,7 +63,7 @@ app.use(
       "Access-Control-Allow-Methods",
       "Set-Cookie",
     ],
-  })
+  }),
 );
 app.use(logger("dev"));
 app.use(helmet());
