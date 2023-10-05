@@ -47,6 +47,8 @@ app.use(
       "https://laconic-e-commerce-sample-api.cyclic.app",
       "https://minanabil96.github.io/hseClone/",
       "https://minanabil96.github.io/hseClone",
+      "https://minanabil96.github.io",
+      "https://minanabil96.github.io/",
       // "https://mina-nabil-portfolio.vercel.app/",
       // "https://mina-nabil-portfolio.vercel.app",
       // "https://mina-nabil-portfolio-minanabil96.vercel.app/",
