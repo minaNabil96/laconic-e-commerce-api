@@ -48,6 +48,8 @@ app.use(
       "https://minanabil96.github.io/fullblog/",
       "https://elfathrealestate.vercel.app/",
       "https://elfathrealestate.vercel.app",
+      "https://minanabil96.github.io/weClone/",
+      "https://minanabil96.github.io/weClone",
     ],
     allowedHeaders: [
       "content-type",
